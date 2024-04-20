@@ -14,7 +14,7 @@ enum MAIN_STACK {
 
 interface NavigationParamList extends ParamListBase {
   [MAIN_STACK.POSTS]: undefined;
-  [MAIN_STACK.POST_DETAILS]: {postId: string};
+  [MAIN_STACK.POST_DETAILS]: {postId: number};
 }
 
 type RootRouteProps<RouteName extends keyof NavigationParamList> = RouteProp<

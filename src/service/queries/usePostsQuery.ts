@@ -16,8 +16,8 @@ function usePostsQuery() {
   const axios = useAxios();
 
   const fetchBuyer = useCallback(
-    async (signal: AbortSignal | undefined): Promise<PostsResponse[]> => {
-      const {data} = await axios.get<PostsResponse[]>(POSTS_API.GET_POSTS, {
+    async (signal: AbortSignal | undefined): Promise<PostsResponse> => {
+      const {data} = await axios.get<PostsResponse>(POSTS_API.GET_POSTS, {
         signal,
       });
       return data;
@@ -25,7 +25,7 @@ function usePostsQuery() {
     [axios],
   );
 
-  return useQuery<PostsResponse[], AxiosError>({
+  return useQuery<PostsResponse, AxiosError>({
     queryFn: ({signal}) => fetchBuyer(signal),
     queryKey: [CACHE_KEYS.POSTS],
   });
